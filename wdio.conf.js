@@ -1,4 +1,9 @@
 exports.config = {
+  // Configuración de la conexión a Appium
+  hostname: "localhost", // O '127.0.0.1' si prefieres la IP
+  port: 4723,
+  //path: "/wd/hub", // Este es el path por defecto para Appium, usualmente no se necesita cambiar
+
   //
   // ====================
   // Runner Configuration
@@ -50,10 +55,13 @@ exports.config = {
   capabilities: [
     {
       platformName: "Android",
-      "appium:deviceName": "MiDispositivo",
-      "appium:platformVersion": "11",
-      "appium:app": "/aps/org.wikipedia.apk",
+      "appium:deviceName": "emulator-5554",
+      "appium:platformVersion": "16",
+      "appium:app":
+        "./apks/Wikipedia_2.7.50536-r-2025-06-18_APKPure/org.wikipedia.apk",
       "appium:automationName": "UiAutomator2",
+      "appium:appPackage": "org.wikipedia", // <--- PAQUETE DE LA APP
+      "appium:appActivity": "org.wikipedia.main.MainActivity",
     },
   ],
 
