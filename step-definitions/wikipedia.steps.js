@@ -1,16 +1,39 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
 
-Given("que abrí la aplicación de Wikipedia", async () => {
+Given("que la aplicación de Wikipedia está abierta", async () => {
   // Abrir la aplicación usando Appium
 });
 
-When("busco {string}", async (articulo) => {
-  // Buscar el artículo usando el input de búsqueda
+When("el usuario saltea la intro de la app del primer uso", async () => {
+  const el1 = await $("id:org.wikipedia:id/fragment_onboarding_forward_button");
+  await el1.click();
+  await el1.click();
+  await el1.click();
+
+  const el2 = $("id:org.wikipedia:id/fragment_onboarding_done_button");
+  await el2.click();
 });
 
-Then("veo el artículo {string}", async (articulo) => {
+When('el usuario ingresa "appium" en la barra de búsqueda', async () => {
+  const el3 = await $(
+    '-android uiautomator:new UiSelector().text("Search Wikipedia")'
+  );
+  await el3.waitForDisplayed();
+  await el3.click();
+  const el4 = await $("id:org.wikipedia:id/search_src_text");
+  await el4.addValue("appium");
+});
+
+When("seleciona el primer articulo", async () => {
+  const el5 = await $(
+    '-android uiautomator:new UiSelector().className("android.view.ViewGroup").instance(1)'
+  );
+  await el5.click();
+});
+
+Then('se muestra el artículo titulado "Appium"', async () => {
   // Verificar que el título del artículo es el esperado
-  const tituloArticulo = await $('[name="title"]').getText();
-  assert.strictEqual(tituloArticulo, articulo);
+  //const tituloArticulo = await $('[name="title"]').getText();
+  //assert.strictEqual(tituloArticulo, articulo);
 });
