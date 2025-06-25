@@ -1,9 +1,8 @@
-Característica: Búsqueda en Wikipedia
-  Como usuaria de Wikipedia
-  Quiero buscar un artículo
-  Para encontrar información
+Feature: Búsqueda de artículos en la app de Wikipedia
 
-Escenario: Buscar un artículo existente
-  Dado que abrí la aplicación de Wikipedia
-  Cuando busco "Argentina"
-  Entonces veo el artículo "Argentina"
+  Scenario: Buscar un artículo existente
+    Given que la aplicación de Wikipedia está abierta
+    When el usuario saltea la intro de la app del primer uso
+    When el usuario ingresa "appium" en la barra de búsqueda
+    When seleciona el primer articulo
+    Then se muestra el artículo titulado "Appium"
