@@ -20,7 +20,7 @@ exports.config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: ["./features/**/*.feature"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -115,7 +115,7 @@ exports.config = {
   framework: "cucumber",
 
   cucumberOpts: {
-    feature: ["./features/**/*.feature"],
+    require: ["./step-definitions/**/*.steps.js"],
   },
 
   //
