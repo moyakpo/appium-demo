@@ -52,7 +52,7 @@ exports.config = {
       platformName: "Android",
       "appium:deviceName": "MiDispositivo",
       "appium:platformVersion": "11",
-      "appium:app": "/ruta/a/mi/aplicacion.apk",
+      "appium:app": "/aps/org.wikipedia.apk",
       "appium:automationName": "UiAutomator2",
     },
   ],
@@ -112,7 +112,11 @@ exports.config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: "mocha",
+  framework: "cucumber",
+
+  cucumberOpts: {
+    feature: ["./features/**/*.feature"],
+  },
 
   //
   // The number of times to retry the entire specfile when it fails as a whole
