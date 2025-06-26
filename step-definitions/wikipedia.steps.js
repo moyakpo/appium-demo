@@ -33,7 +33,13 @@ When("seleciona el primer articulo", async () => {
 });
 
 Then('se muestra el artículo titulado "Appium"', async () => {
-  // Verificar que el título del artículo es el esperado
-  //const tituloArticulo = await $('[name="title"]').getText();
-  //assert.strictEqual(tituloArticulo, articulo);
+  const el6 = await $("accessibility id:Close");
+  await el6.waitForDisplayed();
+  await el6.click();
+
+  const el8 = await $(
+    '-android uiautomator:new UiSelector().text("Appium").instance(0)'
+  );
+  const tituloArticulo = await el8.getText();
+  assert.strictEqual(tituloArticulo, "Appium");
 });
