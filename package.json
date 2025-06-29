@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@wdio/cli": "^9.16.2",
+    "dotenv": "^17.0.0",
     "webdriverio": "^9.16.2"
   },
   "devDependencies": {
