@@ -1,4 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 exports.config = {
+  // Configuración de la conexión a Appium
+  hostname: "localhost", // O '127.0.0.1' si prefieres la IP
+  port: 4723,
+  //path: "/wd/hub", // Este es el path por defecto para Appium, usualmente no se necesita cambiar
+
   //
   // ====================
   // Runner Configuration
@@ -49,10 +57,11 @@ exports.config = {
   //
   capabilities: [
     {
-      platformName: "Android",
-      "appium:deviceName": "MiDispositivo",
-      "appium:platformVersion": "11",
-      "appium:app": "/aps/org.wikipedia.apk",
+      platformName: process.env.APPIUM_PLATFORM_NAME || "Android",
+      "appium:deviceName": process.env.APPIUM_DEVICE_NAME || "MiDispositivo",
+      "appium:platformVersion": process.env.APPIUM_PLATFORM_VERSION || "12",
+      "appium:app":
+        "./apks/" + process.env.APK_FILE || "Android.NuevoAppium.apk",
       "appium:automationName": "UiAutomator2",
     },
   ],
