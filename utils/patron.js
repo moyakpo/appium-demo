@@ -5,14 +5,14 @@ const usePatron = async (patronPadName = "", pointSelectorName = "", patronStrin
   const pointsLocation = await getPointsLocations(pointSelectorName);
 
   const actionsSequence = browser.action("pointer", { parameters: { pointerType: "touch" } });
-  await actionsSequence.move({ x: pointsLocation[patron[0]].x, y: pointsLocation[patron[0]].y });
-  await actionsSequence.down();
+  actionsSequence.move({ x: pointsLocation[patron[0]].x, y: pointsLocation[patron[0]].y });
+  actionsSequence.down();
 
   for (let i = 1; i < patron.length; i++) {
     const pointIndex = patron[i];
-    await actionsSequence.move({ x: pointsLocation[pointIndex].x, y: pointsLocation[pointIndex].y });
+    actionsSequence.move({ x: pointsLocation[pointIndex].x, y: pointsLocation[pointIndex].y });
   }
-  await actionsSequence.up();
+  actionsSequence.up();
 
   console.log("🟡 Ejecutando acciones del patrón...");
 
