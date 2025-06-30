@@ -60,8 +60,7 @@ exports.config = {
       platformName: process.env.APPIUM_PLATFORM_NAME || "Android",
       "appium:deviceName": process.env.APPIUM_DEVICE_NAME || "MiDispositivo",
       "appium:platformVersion": process.env.APPIUM_PLATFORM_VERSION || "12",
-      "appium:app":
-        "./apks/" + process.env.APK_FILE || "Android.NuevoAppium.apk",
+      "appium:app": "./apks/" + process.env.APK_FILE || "Android.NuevoAppium.apk",
       "appium:automationName": "UiAutomator2",
     },
   ],
@@ -100,7 +99,7 @@ exports.config = {
   // baseUrl: 'http://localhost:8080',
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 10000,
+  waitforTimeout: 30000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -125,6 +124,7 @@ exports.config = {
 
   cucumberOpts: {
     require: ["./step-definitions/**/*.steps.js"],
+    timeout: process.env.CUCUMBER_OPTS_TIMEOUT || 60000, // Timeout for each step
   },
 
   //
