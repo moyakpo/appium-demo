@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "wdio",
+			"problemMatcher": [],
+			"label": "WDIO",
+			"detail": "wdio run ./wdio.conf.js",
+			"hide": true
+		},
+		{
+			"type": "process",
+			"command": "appium",
+			"label": "Appium",
+			"detail": "Starts Appium",
+			"hide": true
+		},
+		{
+			"label": "Run Tests",
+			"dependsOn": ["Appium", "WDIO"],
+			"dependsOrder": "parallel",
+		}
+	]
+}
